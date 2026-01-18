@@ -4,7 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import pe.edu.tecsup.app.dtos.CategoriaDto;
 import pe.edu.tecsup.app.dtos.ProductoDto;
+import pe.edu.tecsup.app.entities.Categoria;
 import pe.edu.tecsup.app.entities.Producto;
 
 import java.util.List;
@@ -17,6 +19,9 @@ class ProductoServiceTest {
 
     @Autowired
     private ProductoService productoService;
+
+    @Autowired
+    private CategoriaService categoriaService;
 
     @Test
     void findAll() {
@@ -89,8 +94,10 @@ class ProductoServiceTest {
                     = this.productoService.findAll().stream().count();
             log.info("Total antes de insertar: {}", totalAntes);
 
+            var categoriaDto = this.categoriaService.findById(1L);
+
             var productoDto = ProductoDto.builder()
-                    .categorias_id(1L) // Categoria de procesadores
+                    .categoriaDto(categoriaDto) // Categoria de procesadores
                     .nombre("GTX-5070")
                     .descripcion("GPU para gaming de alta gama")
                     .precio(1500.00)

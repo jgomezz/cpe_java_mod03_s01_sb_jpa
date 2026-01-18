@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pe.edu.tecsup.app.dtos.CategoriaDto;
 import pe.edu.tecsup.app.entities.Categoria;
 import pe.edu.tecsup.app.mapper.CategoriaMapper;
+import pe.edu.tecsup.app.mapper.ProductoMapper;
 import pe.edu.tecsup.app.repositories.CategoriaRepository;
 
 import java.util.List;
@@ -28,4 +29,10 @@ public class CategoriaServiceImpl implements CategoriaService {
                 .toList();
 
     }
+
+    @Override
+    public CategoriaDto findById(Long id) throws Exception {
+        log.info("call findById()");
+        // this.repository.findById(id) return wrapper Optional<Producto>
+        return CategoriaMapper.toDto(this.repository.findById(id).get());    }
 }

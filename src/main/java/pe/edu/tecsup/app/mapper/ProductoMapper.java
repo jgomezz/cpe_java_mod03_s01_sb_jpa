@@ -1,6 +1,7 @@
 package pe.edu.tecsup.app.mapper;
 
 import pe.edu.tecsup.app.dtos.ProductoDto;
+import pe.edu.tecsup.app.entities.Categoria;
 import pe.edu.tecsup.app.entities.Producto;
 
 public class ProductoMapper {
@@ -14,7 +15,7 @@ public class ProductoMapper {
             .stock(entity.getStock())
             .estado(entity.getEstado())
             .creado(entity.getCreado())
-            .categorias_id(entity.getCategorias_id())
+            .categoriaDto(CategoriaMapper.toDto(entity.getCategoria()))
             .build();
     }
 
@@ -28,7 +29,7 @@ public class ProductoMapper {
         entity.setStock(dto.getStock());
         entity.setEstado(dto.getEstado());
         entity.setCreado(dto.getCreado());
-        entity.setCategorias_id(dto.getCategorias_id());
+        entity.setCategoria(CategoriaMapper.toEntity(dto.getCategoriaDto()));
 
         return entity;
     }

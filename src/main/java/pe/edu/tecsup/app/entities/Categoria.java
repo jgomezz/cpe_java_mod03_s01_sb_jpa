@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //@Builder
 @Data
 @Entity
@@ -21,6 +24,9 @@ public class Categoria {
 
     @Column(name="orden")
     private Integer orden;
+
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto>  productos = new ArrayList<>();
 
     @Override
     public String toString() {

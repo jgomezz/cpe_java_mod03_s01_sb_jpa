@@ -12,8 +12,7 @@ import java.util.Date;
 public class ProductoDto {
 
     private Long id;
-    private Long categorias_id;
-    private Categoria categoria;
+    private CategoriaDto categoriaDto;
     private String nombre;
     private String descripcion;
     private Double precio;

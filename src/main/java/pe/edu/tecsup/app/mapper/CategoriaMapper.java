@@ -17,4 +17,16 @@ public class CategoriaMapper {
             .orden(entity.getOrden())
             .build();
     }
+
+    public static Categoria toEntity(CategoriaDto dto) {
+
+        Categoria entity = new Categoria();
+        entity.setId(dto.getId());
+        entity.setNombre(dto.getNombre());
+        entity.setOrden(dto.getOrden());
+
+        return entity;
+
+    }
+
 }
