@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import pe.edu.tecsup.app.dtos.CategoriaDto;
 import pe.edu.tecsup.app.entities.Categoria;
 
 import java.util.List;
@@ -21,10 +22,10 @@ class CategoriaServiceTest {
     @Test
     void findAll() {
 
-        List<Categoria> categorias = this.categoriaService.findAll();
+        List<CategoriaDto> categorias = this.categoriaService.findAll();
 
-        for (Categoria categoria : categorias) {
-            log.info(categoria.toString());
+        for (CategoriaDto categoriaDto : categorias) {
+            log.info(categoriaDto.toString());
         }
 
         // Validaciones
