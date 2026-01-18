@@ -7,12 +7,12 @@
 Categoria.java
 
 ```java
+
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
-@Builder
 @Data
 @Entity
 @Table(name = "categorias")
@@ -38,4 +38,23 @@ public class Categoria {
                 '}';
     }
 }
+
 ```
+2.- Adaptar el Repository
+
+CategoriaRepository.java
+
+```java
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import pe.edu.tecsup.app.entities.Categoria;
+
+import java.util.List;
+
+public interface CategoriaRepository
+        extends JpaRepository<Categoria, Long> {
+}
+
+```
+
+3.- Ejecutar las pruebas   

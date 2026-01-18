@@ -3,14 +3,14 @@ package pe.edu.tecsup.app.entities;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Builder
+//@Builder
 @Data
 @Entity
 @Table(name = "categorias")
 public class Categoria {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
