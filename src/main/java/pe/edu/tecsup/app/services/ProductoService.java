@@ -1,0 +1,19 @@
+package pe.edu.tecsup.app.services;
+
+import pe.edu.tecsup.app.entities.Producto;
+
+import java.util.List;
+
+public interface ProductoService {
+
+    List<Producto> findAll() throws Exception;
+    List<Producto> findByName(String nombre) throws Exception;
+    Producto findById(Long id) throws Exception;
+
+    void save(Producto producto) throws Exception;
+
+    void update(Long id, String nombreProducto) throws Exception;
+
+    void deleteById(Long id) throws Exception;
+
+}
