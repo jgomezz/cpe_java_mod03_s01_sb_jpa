@@ -10,15 +10,4 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     // findBy + NombreDelAtributo
     List<Producto> findByNombre(String nombre) throws Exception;
 
-    /*
-    List<Producto> findAll() throws Exception;
-    Producto findById(Long id) throws Exception;
-
-    void save(Producto producto) throws Exception;
-
-    void update(Long id, String nombreProducto) throws
-            Exception;
-
-    void deleteById(Long id) throws Exception;
-    */
 }
