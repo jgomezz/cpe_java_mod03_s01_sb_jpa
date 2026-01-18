@@ -11,9 +11,9 @@ public interface ProductoService {
     List<ProductoDto> findByName(String nombre) throws Exception;
     ProductoDto findById(Long id) throws Exception;
 
-    void save(ProductoDto producto) throws Exception;
+    void save(ProductoDto productoDto) throws Exception;
 
-    void update(Long id, String nombreProducto) throws Exception;
+    void update(ProductoDto productoDto) throws Exception;
 
     void deleteById(Long id) throws Exception;
 

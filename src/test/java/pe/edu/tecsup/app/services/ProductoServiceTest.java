@@ -114,10 +114,15 @@ class ProductoServiceTest {
     void update() {
         // Datos de entrada
         Long ID_PROD_UPDATE = 12L;   // Asegúrate de que este ID exista en la base de datos
-        String NUEVO_NOMBRE = "iPhone 14 Pro Max";
+        String NUEVO_NOMBRE = "iPhone 16 Pro Max";
+
         try {
+            // Busca el producto que desea modificar
+            ProductoDto productoDto = this.productoService.findById(ID_PROD_UPDATE);
+            productoDto.setNombre(NUEVO_NOMBRE);
+
             // Actualizar el nombre del producto
-            this.productoService.update(ID_PROD_UPDATE, NUEVO_NOMBRE);
+            this.productoService.update(productoDto);
 
             // Recuperar el producto actualizado
             var productoActualizado =

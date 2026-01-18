@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.tecsup.app.dtos.ProductoDto;
-import pe.edu.tecsup.app.entities.Producto;
 import pe.edu.tecsup.app.mapper.ProductoMapper;
 import pe.edu.tecsup.app.repositories.ProductoRepository;
 
@@ -35,7 +34,7 @@ public class ProductoServiceImpl implements ProductoService{
     @Override
     public List<ProductoDto> findByName(String nombre) throws Exception {
         log.info("call findByName()");
-        return this.repository.findByName(nombre).stream()
+        return this.repository.findByNombre(nombre).stream()
                 .map(ProductoMapper::toDto)
                 .toList();
     }
@@ -43,19 +42,20 @@ public class ProductoServiceImpl implements ProductoService{
     @Override
     public ProductoDto findById(Long id) throws Exception {
         log.info("call findById()");
-        return ProductoMapper.toDto(this.repository.findById(id));
+        // this.repository.findById(id) return wrapper Optional<Producto>
+        return ProductoMapper.toDto(this.repository.findById(id).get());
     }
 
     @Override
-    public void save(ProductoDto producto) throws Exception {
+    public void save(ProductoDto productoDto) throws Exception {
         log.info("call save()");
-        this.repository.save(ProductoMapper.toEntity(producto));
+        this.repository.save(ProductoMapper.toEntity(productoDto));
     }
 
     @Override
-    public void update(Long id, String nombreProducto) throws Exception {
+    public void update(ProductoDto productoDto) throws Exception {
         log.info("call update()");
-        this.repository.update(id, nombreProducto);
+        this.repository.save(ProductoMapper.toEntity(productoDto));
     }
 
     @Override
