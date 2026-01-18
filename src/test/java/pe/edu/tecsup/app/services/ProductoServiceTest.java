@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import pe.edu.tecsup.app.dtos.ProductoDto;
 import pe.edu.tecsup.app.entities.Producto;
 
 import java.util.List;
@@ -88,7 +89,7 @@ class ProductoServiceTest {
                     = this.productoService.findAll().stream().count();
             log.info("Total antes de insertar: {}", totalAntes);
 
-            var producto = Producto.builder()
+            var productoDto = ProductoDto.builder()
                     .categorias_id(1L) // Categoria de procesadores
                     .nombre("GTX-5070")
                     .descripcion("GPU para gaming de alta gama")
@@ -97,7 +98,7 @@ class ProductoServiceTest {
                     .estado(1)  // Estado ACTIVO
                     .build();
 
-            this.productoService.save(producto);
+            this.productoService.save(productoDto);
             long totalDespues
                     = this.productoService.findAll().stream().count();
 
@@ -138,13 +139,13 @@ class ProductoServiceTest {
 
         try {
 
-            List<Producto> productos = this.productoService.findAll();
+            List<ProductoDto> productos = this.productoService.findAll();
             int totalAntes = productos.size();
 
             if (productos.isEmpty())
                 return; // test pass
 
-            Producto ultimoProducto =
+            ProductoDto ultimoProducto =
                     productos.get(productos.size() - 1);
 
             productoService.deleteById(ultimoProducto.getId());

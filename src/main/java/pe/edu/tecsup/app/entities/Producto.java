@@ -7,7 +7,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 @Data
-@Builder
 public class Producto {
 
     private Long id;

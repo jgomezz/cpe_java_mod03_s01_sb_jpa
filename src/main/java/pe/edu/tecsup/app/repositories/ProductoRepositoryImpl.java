@@ -15,6 +15,7 @@ import java.util.List;
 class ProductoRowMapper implements RowMapper<Producto> {
     @Override
     public Producto mapRow(java.sql.ResultSet rs, int rowNum) throws java.sql.SQLException {
+        /*
         Producto producto =  Producto.builder()
                                 .id(rs.getLong("id"))
                                 .categorias_id(rs.getLong("categorias_id"))
@@ -28,6 +29,21 @@ class ProductoRowMapper implements RowMapper<Producto> {
                                 .estado(rs.getInt("estado"))
                                 .creado(rs.getDate("creado"))
                                 .build();
+        */
+        Producto producto = new Producto();
+
+        producto.setId(rs.getLong("id"));
+        producto.setCategorias_id(rs.getLong("categorias_id"));
+        producto.setNombre(rs.getString("nombre"));
+        producto.setDescripcion(rs.getString("descripcion"));
+        producto.setPrecio(rs.getDouble("precio"));
+        producto.setStock(rs.getInt("stock"));
+        producto.setImagen_nombre(rs.getString("imagen_nombre"));
+        producto.setImagen_tipo(rs.getString("imagen_tipo"));
+        producto.setImagen_tamanio(rs.getLong("imagen_tamanio"));
+        producto.setEstado(rs.getInt("estado"));
+        producto.setCreado(rs.getDate("creado"));
+
         return producto;
     }
 }
