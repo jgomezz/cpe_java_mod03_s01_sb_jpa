@@ -1,5 +1,12 @@
-package pe.edu.tecsup.app.entities;
+# Implementar JPA
 
+## Categoria
+
+1.- Mapear la entidad  
+
+Categoria.java
+
+```java
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -31,3 +38,4 @@ public class Categoria {
                 '}';
     }
 }
+```
