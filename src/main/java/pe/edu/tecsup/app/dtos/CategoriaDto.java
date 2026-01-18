@@ -2,6 +2,9 @@ package pe.edu.tecsup.app.dtos;
 
 import lombok.Builder;
 import lombok.Data;
+import pe.edu.tecsup.app.entities.Producto;
+
+import java.util.List;
 
 @Builder
 @Data

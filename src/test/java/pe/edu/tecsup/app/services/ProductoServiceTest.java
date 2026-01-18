@@ -54,6 +54,8 @@ class ProductoServiceTest {
         try {
             var producto = this.productoService.findById(ID_PROD_SEARCH);
             log.info(producto.toString());
+            //log.info(producto.getCategoriaDto().toString());
+
 
             // Validaciones
             assertNotNull(producto);  // que el producto no sea nulo

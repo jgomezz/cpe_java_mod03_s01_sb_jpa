@@ -11,6 +11,9 @@ public class CategoriaMapper {
      * @return
      */
     public static CategoriaDto toDto(Categoria entity) {
+
+       // System.out.println(entity.getProductos());
+
         return CategoriaDto.builder()
             .id(entity.getId())
             .nombre(entity.getNombre())

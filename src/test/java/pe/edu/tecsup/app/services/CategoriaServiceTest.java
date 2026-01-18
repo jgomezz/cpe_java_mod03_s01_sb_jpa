@@ -9,8 +9,8 @@ import pe.edu.tecsup.app.entities.Categoria;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 @Slf4j
 @SpringBootTest
@@ -33,5 +33,27 @@ class CategoriaServiceTest {
         assertFalse(categorias.isEmpty()); // que la lista no esté vacía
         //assertEquals(3, categorias.size());
 
+    }
+
+    @Test
+    void findById() {
+
+        Long ID_PROD_SEARCH = 1L;
+        String EXPECTED_NOMBRE = "Procesadores";
+
+
+        try {
+            var categoriaDto = this.categoriaService.findById(ID_PROD_SEARCH);
+            log.info(categoriaDto.toString());
+            //log.info(categoriaDto);
+
+
+            // Validaciones
+            assertNotNull(categoriaDto);  // que el producto no sea nulo
+            assertEquals(EXPECTED_NOMBRE, categoriaDto.getNombre());
+
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
     }
 }
