@@ -13,5 +13,5 @@ public class CategoriaDto {
     private Long id;
     private String nombre;
     private Integer orden;
-
+    private List<Producto>  productos;
 }

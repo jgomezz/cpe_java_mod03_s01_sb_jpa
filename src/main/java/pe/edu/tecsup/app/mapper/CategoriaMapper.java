@@ -12,12 +12,13 @@ public class CategoriaMapper {
      */
     public static CategoriaDto toDto(Categoria entity) {
 
-       // System.out.println(entity.getProductos());
+       System.out.println(entity.getProductos());
 
         return CategoriaDto.builder()
             .id(entity.getId())
             .nombre(entity.getNombre())
             .orden(entity.getOrden())
+            .productos(entity.getProductos())
             .build();
     }
 

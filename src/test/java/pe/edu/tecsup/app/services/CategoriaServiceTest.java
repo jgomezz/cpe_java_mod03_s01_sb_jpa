@@ -4,8 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 import pe.edu.tecsup.app.dtos.CategoriaDto;
 import pe.edu.tecsup.app.entities.Categoria;
+import pe.edu.tecsup.app.entities.Producto;
 
 import java.util.List;
 
@@ -44,9 +46,11 @@ class CategoriaServiceTest {
 
         try {
             var categoriaDto = this.categoriaService.findById(ID_PROD_SEARCH);
-            log.info(categoriaDto.toString());
-            //log.info(categoriaDto);
+            //log.info(categoriaDto.toString());
 
+            for(Producto prod : categoriaDto.getProductos()) {
+                log.info(prod.toString());
+            }
 
             // Validaciones
             assertNotNull(categoriaDto);  // que el producto no sea nulo

@@ -3,17 +3,21 @@ package pe.edu.tecsup.app.services;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pe.edu.tecsup.app.dtos.CategoriaDto;
 import pe.edu.tecsup.app.entities.Categoria;
+import pe.edu.tecsup.app.entities.Producto;
 import pe.edu.tecsup.app.mapper.CategoriaMapper;
 import pe.edu.tecsup.app.mapper.ProductoMapper;
 import pe.edu.tecsup.app.repositories.CategoriaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
 @AllArgsConstructor // Genera el constructor con todos los atributos
+@Transactional
 public class CategoriaServiceImpl implements CategoriaService {
 
     private final CategoriaRepository repository;
@@ -33,6 +37,6 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     public CategoriaDto findById(Long id) throws Exception {
         log.info("call findById()");
-        // this.repository.findById(id) return wrapper Optional<Producto>
+        //this.repository.findById(id) return wrapper Optional<Producto>
         return CategoriaMapper.toDto(this.repository.findById(id).get());    }
 }
