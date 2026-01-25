@@ -1,7 +1,12 @@
 package pe.edu.tecsup.app.mapper;
 
 import pe.edu.tecsup.app.dtos.CategoriaDto;
+import pe.edu.tecsup.app.dtos.ProductoDto;
 import pe.edu.tecsup.app.entities.Categoria;
+import pe.edu.tecsup.app.entities.Producto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriaMapper {
 
@@ -18,7 +23,7 @@ public class CategoriaMapper {
             .id(entity.getId())
             .nombre(entity.getNombre())
             .orden(entity.getOrden())
-            .productos(entity.getProductos())
+            .productos(CategoriaMapper.toListDto(entity.getProductos()))
             .build();
     }
 
@@ -33,4 +38,29 @@ public class CategoriaMapper {
 
     }
 
+    /**
+     *
+     * @param entityList
+     * @return
+     */
+    public static List<ProductoDto> toListDto(List<Producto> entityList) {
+
+        List<ProductoDto> dtos = new ArrayList<>();
+
+        for(Producto entity : entityList) {
+            dtos.add(ProductoDto.builder()
+                    .id(entity.getId())
+                    .nombre(entity.getNombre())
+                    .descripcion(entity.getDescripcion())
+                    .precio(entity.getPrecio())
+                    .stock(entity.getStock())
+                    .estado(entity.getEstado())
+                    .creado(entity.getCreado())
+                    .build() );
+
+        }
+
+        return dtos;
+
+    }
 }

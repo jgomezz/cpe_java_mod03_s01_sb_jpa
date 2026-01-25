@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.tecsup.app.dtos.CategoriaDto;
+import pe.edu.tecsup.app.dtos.ProductoDto;
 import pe.edu.tecsup.app.entities.Categoria;
 import pe.edu.tecsup.app.entities.Producto;
 
@@ -48,8 +49,8 @@ class CategoriaServiceTest {
             var categoriaDto = this.categoriaService.findById(ID_PROD_SEARCH);
             //log.info(categoriaDto.toString());
 
-            for(Producto prod : categoriaDto.getProductos()) {
-                log.info(prod.toString());
+            for(ProductoDto dto : categoriaDto.getProductos()) {
+                log.info(dto.toString());
             }
 
             // Validaciones
